@@ -7,7 +7,7 @@ import (
 	"go/token"
 	"testing"
 
-	"github.com/kinwyb/go/generate"
+	"github.com/sunshibao/go-utils/generate"
 )
 
 func TestLay_TransformAST(t *testing.T) {

@@ -7,7 +7,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/kinwyb/go/db"
+	"github.com/sunshibao/go-utils/db"
 )
 
 //orcale 操作对象

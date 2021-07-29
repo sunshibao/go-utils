@@ -25,7 +25,7 @@ import (
 	"golang.org/x/text/encoding"
 	"golang.org/x/text/encoding/unicode"
 
-	"github.com/kinwyb/go/socket"
+	"github.com/sunshibao/go-utils/socket"
 )
 
 var decoder *encoding.Decoder = unicode.UTF16(unicode.LittleEndian, unicode.IgnoreBOM).NewDecoder()

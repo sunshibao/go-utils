@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
-	"github.com/kinwyb/go/conv"
+	"github.com/sunshibao/go-utils/conv"
 	"github.com/xwb1989/sqlparser"
 	"net/url"
 	"regexp"
@@ -13,7 +13,7 @@ import (
 	"time"
 
 	sqlserver "github.com/denisenkom/go-mssqldb"
-	"github.com/kinwyb/go/db"
+	"github.com/sunshibao/go-utils/db"
 )
 
 //mssql 操作对象

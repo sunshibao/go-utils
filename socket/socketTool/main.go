@@ -6,9 +6,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/kinwyb/go/socket"
+	"github.com/sunshibao/go-utils/socket"
 
-	"github.com/kinwyb/go/logs"
+	"github.com/sunshibao/go-utils/logs"
 	"github.com/spf13/cobra"
 )
 

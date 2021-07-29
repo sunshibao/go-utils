@@ -1,4 +1,4 @@
-package heldiamgo
+package image
 
 import (
 	"image"

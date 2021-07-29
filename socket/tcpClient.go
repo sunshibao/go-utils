@@ -7,7 +7,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/kinwyb/go/logs"
+	"github.com/sunshibao/go-utils/logs"
 )
 
 // tcp客户端配置

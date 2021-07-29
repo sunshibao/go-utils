@@ -3,16 +3,15 @@ package socket
 import (
 	"context"
 	"fmt"
+	"github.com/sunshibao/go-utils/base"
 	"io"
 	"net"
 	"strconv"
 	"strings"
 
-	"github.com/kinwyb/go"
-
 	"errors"
 
-	"github.com/kinwyb/go/logs"
+	"github.com/sunshibao/go-utils/logs"
 )
 
 // tcp服务端配置
@@ -160,7 +159,7 @@ func (s *TcpServer) newClientAccept(conn net.Conn) {
 
 // 客户端id生成器
 func clientIDGen() string {
-	id := heldiamgo.ID()
+	id := base.ID()
 	return strings.ToUpper(strconv.FormatUint(id, 32))
 }
 

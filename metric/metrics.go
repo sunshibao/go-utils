@@ -1,4 +1,4 @@
-package heldiamgo
+package metric
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/kinwyb/go/logs"
+	"github.com/sunshibao/go-utils/logs"
 
 	"github.com/shirou/gopsutil/process"
 

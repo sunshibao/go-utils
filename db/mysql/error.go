@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/kinwyb/go/db"
+	"github.com/sunshibao/go-utils/db"
 )
 
 var SQLEmptyChange = errors.New("数据无变化")

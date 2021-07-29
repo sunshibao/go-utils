@@ -1,8 +1,11 @@
 module socketC
 
-go 1.13
+go 1.15
 
 require (
-	github.com/kinwyb/go v0.0.0-20191005030833-f2a4ce42060f
-	golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2
+	github.com/sunshibao/go-utils v0.0.0-20210729073106-bc51f0f9972f
+	golang.org/x/text v0.3.6
+	google.golang.org/grpc v1.39.0 // indirect
 )
+
+replace google.golang.org/grpc v1.39.0 => google.golang.org/grpc v1.26.0

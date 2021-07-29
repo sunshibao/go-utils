@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/kinwyb/go/logs"
+	"github.com/sunshibao/go-utils/logs"
 )
 
 func Test_NewTcpServer(t *testing.T) {

@@ -3,7 +3,7 @@ package tags
 import (
 	"bytes"
 	"encoding/gob"
-	"github.com/kinwyb/go/conv"
+	"github.com/sunshibao/go-utils/conv"
 	"reflect"
 	"sync"
 )

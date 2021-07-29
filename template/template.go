@@ -1,4 +1,4 @@
-package heldiamgo
+package template
 
 //使用js的artTemplate做模版解析引擎
 

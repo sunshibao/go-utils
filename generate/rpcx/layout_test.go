@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/kinwyb/go/generate"
+	"github.com/sunshibao/go-utils/generate"
 )
 
 func TestLay_TransformAST(t *testing.T) {
@@ -21,8 +21,8 @@ package gokit
 import (
 	"ASID/models/objs"
 
-	"github.com/kinwyb/go/db"
-	"github.com/kinwyb/go/err1"
+	"github.com/sunshibao/go-utils/db"
+	"github.com/sunshibao/go-utils/err1"
 )
 
 // ColorService describes the service.

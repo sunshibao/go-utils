@@ -8,7 +8,7 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/kinwyb/go/db"
+	"github.com/sunshibao/go-utils/db"
 )
 
 var rep *regexp.Regexp

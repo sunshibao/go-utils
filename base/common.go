@@ -1,4 +1,4 @@
-package heldiamgo
+package base
 
 import (
 	"encoding/json"

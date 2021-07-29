@@ -1,7 +1,7 @@
 package mssql
 
 import (
-	"github.com/kinwyb/go/db"
+	"github.com/sunshibao/go-utils/db"
 	"testing"
 )
 

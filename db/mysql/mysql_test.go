@@ -3,7 +3,7 @@ package mysql
 import (
 	"testing"
 
-	"github.com/kinwyb/go/db"
+	"github.com/sunshibao/go-utils/db"
 	"github.com/smartystreets/goconvey/convey"
 )
 
@@ -70,7 +70,7 @@ func Benchmark_Mysql(b *testing.B) {
 	conn.Close()
 }
 
-//上一版本查询测试: github.com/kinwyb/golang/gosql
+//上一版本查询测试: github.com/sunshibao/go-utilslang/gosql
 func BenchmarkConnect(b *testing.B) {
 	b.StopTimer()
 	conn, err := Connect("api.zhifangw.cn:3306", "lcfgly", "wang93426", "rfid", "loc=Local&multiStatements=true")

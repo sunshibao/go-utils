@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/kinwyb/go/db/tags"
+	"github.com/sunshibao/go-utils/db/tags"
 )
 
 //SetSQL 转换成插入语句
