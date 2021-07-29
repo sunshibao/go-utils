@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// line number hook for log the call context,
+// line number hook for logs the call context,
 type LineHook struct {
 	Field  string
 	levels []log.Level
@@ -32,9 +32,9 @@ func findCaller(skip int) string {
 	for i := 0; i < 11; i++ {
 		file, line, pc = getCaller(skip + i)
 		// 过滤掉所有logrus包，即可得到生成代码信息
-		if strings.HasPrefix(file, "log") {
-			if strings.HasPrefix(file, "log/") ||
-				strings.HasPrefix(file, "log@") ||
+		if strings.HasPrefix(file, "logs") {
+			if strings.HasPrefix(file, "logs/") ||
+				strings.HasPrefix(file, "logs@") ||
 				strings.HasPrefix(file, "logs/") ||
 				strings.HasPrefix(file, "logs@") ||
 				strings.HasPrefix(file, "logrus@") ||

@@ -3,8 +3,8 @@ package heldiamgo
 import (
 	"github.com/coreos/etcd/clientv3"
 	"github.com/coreos/etcd/clientv3/concurrency"
-	"github.com/kinwyb/go/err1"
-	"github.com/kinwyb/go/logs"
+	"github.com/sunshibao/go-utils/err1"
+	"github.com/sunshibao/go-utils/logs"
 )
 
 var (

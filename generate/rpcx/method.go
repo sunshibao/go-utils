@@ -165,7 +165,7 @@ func addMethodClient(root *ast.File, ifc *generate.Iface, m *generate.Method, st
 				&ast.ExprStmt{
 					X: &ast.CallExpr{
 						Fun: &ast.Ident{
-							Name: "log.Error",
+							Name: "logs.Error",
 						},
 						Args: []ast.Expr{
 							&ast.Ident{Name: `"RPCX调用错误:%s",err.Error()`},

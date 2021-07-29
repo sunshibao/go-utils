@@ -23,9 +23,9 @@ func Test_logConsole(t *testing.T) {
 func Test_logFile(t *testing.T) {
 	format := DefaultJsonFormatter
 	l := New()
-	l.ToFile("/Users/heldiam/Desktop/logs/log", 7, &format)
+	l.ToFile("/Users/heldiam/Desktop/logs/logs", 7, &format)
 	l2 := New()
-	l2.ToFile("/Users/heldiam/Desktop/logs/log", 7, &format)
+	l2.ToFile("/Users/heldiam/Desktop/logs/logs", 7, &format)
 	w := sync.WaitGroup{}
 	w.Add(2)
 	go logToFile(l, "L1", &w)
