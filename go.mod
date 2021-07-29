@@ -1,4 +1,4 @@
-module github.com/kinwyb/go
+module github.com/sunshibao/go-utils
 
 replace golang.org/x/text v0.3.0 => github.com/golang/text v0.3.0
 
@@ -36,11 +36,13 @@ require (
 	github.com/golang/protobuf v1.3.2
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/gorilla/websocket v1.4.0 // indirect
+	github.com/gqcn/structs v1.1.1
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
 	github.com/jonboulle/clockwork v0.1.0 // indirect
 	github.com/jtolds/gls v4.2.1+incompatible // indirect
+	github.com/kinwyb/go v0.0.0-20210607003725-9cbcb7c895c3
 	github.com/lestrrat-go/file-rotatelogs v2.3.0+incompatible
 	github.com/lestrrat-go/strftime v1.0.1 // indirect
 	github.com/micro/protobuf v0.0.0-20180321161605-ebd3be6d4fdb
@@ -60,6 +62,7 @@ require (
 	github.com/spf13/cast v1.3.1
 	github.com/spf13/cobra v0.0.3
 	github.com/spf13/pflag v1.0.2 // indirect
+	github.com/stretchr/testify v1.3.0
 	github.com/tebeka/strftime v0.1.4 // indirect
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20171017195756-830351dc03c6 // indirect
 	github.com/ugorji/go/codec v0.0.0-20180831062425-e253f1f20942 // indirect
