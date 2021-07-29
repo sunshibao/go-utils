@@ -3,7 +3,7 @@ package gtimer
 import (
 	"time"
 
-	"jing/service/share/lib/container/glist"
+	"github.com/sunshibao/go-utils/container/glist"
 )
 
 // start starts the ticker using a standalone goroutine.

@@ -1,6 +1,6 @@
 package stringer
 
-import "github.com/kinwyb/go/xrunes"
+import "github.com/sunshibao/go-utils/xrunes"
 
 // String倒排算法 反转字符串
 func Reverse(s string) string {
