@@ -1,4 +1,4 @@
-// Author: Qingshan Luo <edoger@qq.com>
+// Author: sunshibao <664588619@qq.com>
 package uuid
 
 import (
@@ -15,7 +15,7 @@ import (
 // UUID 返回一个32位的不重复字符串
 func UUID() string {
 	if id, err := uuid.NewRandom(); err == nil {
-		return strings.ReplaceAll(id.String(), "-", "")
+		return strings.ReplaceAll(id.String(), "-", "") // 先把-替换为空。
 	}
 	a := md5.Sum(strconv.AppendInt(strconv.AppendUint(nil, rand.Uint64(), 10), time.Now().UnixNano(), 10))
 	return hex.EncodeToString(a[:])
