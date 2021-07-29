@@ -1,0 +1,7 @@
+.idea
+generate/cmd/cmd
+generate/cmd/cmd.exe
+socket/socketTool/tcpTool
+*.xcodeproj
+/socket/socketC/gosocket.dll
+/socket/socketC/gosocket.h
