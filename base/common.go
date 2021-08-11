@@ -270,3 +270,10 @@ func RemoveFloat32ArrayDuplicate(arr []float32) (newArr []float32) {
 	}
 	return
 }
+// 三元表达式
+func If(condition bool, trueVal, falseVal interface{}) interface{} {
+	if condition {
+		return trueVal
+	}
+	return falseVal
+}
