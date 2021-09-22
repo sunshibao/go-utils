@@ -270,6 +270,7 @@ func RemoveFloat32ArrayDuplicate(arr []float32) (newArr []float32) {
 	}
 	return
 }
+
 // 三元表达式
 func If(condition bool, trueVal, falseVal interface{}) interface{} {
 	if condition {
@@ -291,4 +292,14 @@ func Random(n int) <-chan int {
 		}
 	}()
 	return c
+}
+
+// Find获取一个切片并在其中查找元素。如果找到它，它将返回它的密钥，否则它将返回-1和一个错误的bool。
+func IsInSlice(slice []string, val string) bool {
+	for _, item := range slice {
+		if item == val {
+			return true
+		}
+	}
+	return false
 }
