@@ -303,3 +303,26 @@ func IsInSlice(slice []string, val string) bool {
 	}
 	return false
 }
+
+// slice 分页处理  1: 2: 3:
+func Paginate(x []int, skip int, size int) []int {
+	skip = size * skip
+	limit := func() int {
+		if skip+size > len(x) {
+			return len(x)
+		} else {
+			return skip + size
+		}
+
+	}
+
+	start := func() int {
+		if skip > len(x) {
+			return len(x)
+		} else {
+			return skip
+		}
+
+	}
+	return x[start():limit()]
+}
