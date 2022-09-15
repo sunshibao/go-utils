@@ -4,7 +4,7 @@ import (
 	"io"
 
 	red "github.com/go-redis/redis"
-	"github.com/tal-tech/go-zero/core/syncx"
+	"github.com/zeromicro/go-zero/core/syncx"
 )
 
 const (

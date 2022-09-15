@@ -6,9 +6,8 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/tal-tech/go-queue/dq"
 	"github.com/sunshibao/go-utils/logs"
-
+	"github.com/zeromicro/go-queue/dq"
 )
 
 const DefaultName = "default"
