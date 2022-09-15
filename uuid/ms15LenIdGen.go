@@ -32,7 +32,7 @@ type Ms15LenIDGenerator struct {
 	timestampLeftShift uint8 //生成的时间戳左移几位，给workId、序列号腾位，初始化时计算出来的
 }
 
-//实例化毫秒15位一个ID生成器
+//NewMs15LenIDGenerator 实例化毫秒15位一个ID生成器
 func NewMs15LenIDGenerator(workID int64) *Ms15LenIDGenerator {
 	ret := &Ms15LenIDGenerator{
 		lock:               &sync.Mutex{},
@@ -54,7 +54,7 @@ func NewMs15LenIDGenerator(workID int64) *Ms15LenIDGenerator {
 	return ret
 }
 
-//生成时间戳位数,
+//genTs 生成时间戳位数,
 func (mig *Ms15LenIDGenerator) genTs() int64 {
 	rawTs := time.Now().UnixNano()/int64(time.Millisecond) - mig.startTimestamp
 	diff := 64 - mig.timeBitSize
@@ -63,7 +63,7 @@ func (mig *Ms15LenIDGenerator) genTs() int64 {
 	return ret << mig.timestampLeftShift
 }
 
-//生成下一个时间戳，如果时间戳的位数较小，且序号用完时此处等待的时间会较长
+//genNextTs 生成下一个时间戳，如果时间戳的位数较小，且序号用完时此处等待的时间会较长
 func (mig *Ms15LenIDGenerator) genNextTs(last int64) int64 {
 	for {
 		cur := mig.genTs()
@@ -73,7 +73,7 @@ func (mig *Ms15LenIDGenerator) genNextTs(last int64) int64 {
 	}
 }
 
-//生成下一个ID
+//NextID 生成下一个ID
 func (mig *Ms15LenIDGenerator) NextID() (int64, error) {
 	mig.lock.Lock()
 	defer mig.lock.Unlock()

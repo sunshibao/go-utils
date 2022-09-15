@@ -2,9 +2,9 @@
 package goqueue
 
 import (
-    "github.com/tal-tech/go-queue/dq"
+	"github.com/zeromicro/go-queue/dq"
 )
 
 func NewConsumer(conf dq.DqConf) dq.Consumer {
-    return dq.NewConsumer(conf)
+	return dq.NewConsumer(conf)
 }
