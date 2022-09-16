@@ -1,62 +1,76 @@
-//package gosql mysql工具包..引用"github.com/go-sql-driver/mysql"
 package mysql
 
 import (
+	"context"
 	"database/sql"
-	"regexp"
-	"strconv"
+	"fmt"
+	"github.com/spf13/viper"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
+	"gorm.io/gorm/schema"
 	"time"
-
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/sunshibao/go-utils/db"
+	"utils/db/config"
 )
 
-var rep *regexp.Regexp
+var dataBase *gorm.DB
 
 func init() {
-	rep, _ = regexp.Compile("\\s?Error (\\d+):(.*)")
-}
-
-//mysql 操作对象
-type mysql struct {
-	db.Conn
-	linkString string
-}
-
-//链接mysql数据库，其中other参数代表链接字符串附加的配置信息
-//eg:mysql://lcfgly:wang93426@tcp(api.zhifangw.cn:3306)/rfid?loc=Local&multiStatements=true
-//其中other="loc=Local&multiStatements=true"
-func Connect(host, username, password, db string, other ...string) (db.SQL, error) {
-	linkstring := username + ":" + password + "@tcp(" + host + ")/" + db
-	if len(other) > 0 {
-		linkstring += "?" + other[0]
+	if err := config.Init(""); err != nil {
+		panic(err)
 	}
-	result := &mysql{}
-	sqlDB, err := sql.Open("mysql", linkstring)
+	dsn := viper.GetString("mysql.user") + ":" +
+		viper.GetString("mysql.pwd") + "@tcp(" +
+		viper.GetString("mysql.host") + ":" +
+		viper.GetString("mysql.port") + ")/" +
+		viper.GetString("mysql.database") + "?charset=utf8&parseTime=True&loc=Local"
+
+	conn, err := sql.Open("mysql", dsn)
+	conn.SetConnMaxLifetime(30 * time.Minute) // 连接可重用的最长时间
+	conn.SetMaxIdleConns(1000)                // 最大空闲连接数
+	conn.SetMaxOpenConns(10000)               //最大打开连接数
+
+	db, err := gorm.Open(mysql.New(mysql.Config{
+		Conn: conn,
+	}), &gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			SingularTable: true,
+		},
+		DisableForeignKeyConstraintWhenMigrating: true, // 禁用外键关系
+		SkipDefaultTransaction:                   true, // 跳过默认事务
+		PrepareStmt:                              true, // 查询语句解析缓存，提升查询性能
+	})
+
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
-	sqlDB.SetConnMaxIdleTime(1 * time.Minute) //一个小时后重置链接
-	result.SetSQLDB(sqlDB)
-	result.SetDataBaseName(db) //记录数据库名称,表名格式化会用到
-	result.linkString = linkstring
-	return result, nil
+
+	if viper.GetString("mysql.debug") == "true" {
+		db.Logger = db.Logger.LogMode(logger.Info)
+	}
+
+	dataBase = db
 }
 
-// 解析错误
-func formatError(e error) (int64, error) {
-	if e == nil {
-		return 0, nil
+// GetDatabase 获取数据库连接
+func GetDatabase() *gorm.DB {
+	return dataBase
+}
+
+// Ping 检查与数据库的连接是否有效
+func Ping(ctx context.Context) bool {
+	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
+
+	db, err := dataBase.DB()
+	if err != nil {
+		return false
 	}
-	code := int64(1)
-	msg := e.Error()
-	if rep.MatchString(msg) {
-		d := rep.FindAllStringSubmatch(msg, -1)
-		msg = d[0][2]
-		cod, err := strconv.ParseInt(d[0][1], 10, 64)
-		if err == nil {
-			code = cod
-		}
+
+	if err := db.PingContext(ctx); err != nil {
+		fmt.Println("mysql ping error:", err)
+		return false
 	}
-	return code, e
+
+	return true
 }

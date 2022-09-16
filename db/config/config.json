@@ -1,0 +1,22 @@
+{
+  "mongo": {
+    "uri": "43.131.69.147:27017,43.131.92.130:27017,162.62.196.12:27017",
+    "user": "admin",
+    "pwd": "Droi*#2021",
+    "database": "package"
+  },
+  "mysql": {
+    "host": "10.20.40.244",
+    "port": 3306,
+    "user": "root",
+    "pwd": "droi#2022",
+    "database": "yc_manage",
+    "debug": "true"
+  },
+  "redis": {
+    "cluster": false,
+    "addr": "192.168.1.152:7300",
+    "pwd": "Droi*#2020",
+    "db": 0
+  }
+}
