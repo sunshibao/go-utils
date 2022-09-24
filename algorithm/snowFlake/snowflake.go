@@ -1,4 +1,4 @@
-package uuid
+package snowFlake
 
 import (
 	"crypto/md5"
@@ -95,6 +95,10 @@ func NewNode(node int64) (*Node, error) {
 	n.epoch = curTime.Add(time.Unix(Epoch/1000, (Epoch%1000)*1000000).Sub(curTime))
 
 	return &n, nil
+}
+
+func (w *Node) NextID() int64 {
+	return w.Generate()
 }
 
 // Generate creates and returns a unique snowflake ID

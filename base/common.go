@@ -1,10 +1,13 @@
 package base
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"io"
 	"reflect"
 	"regexp"
 	"strings"
+	"utils/algorithm/snowFlake"
 
 	"math/rand"
 
@@ -17,7 +20,7 @@ import (
 	"strconv"
 
 	"github.com/coreos/etcd/pkg/idutil"
-	"github.com/pborman/uuid"
+	"github.com/google/uuid"
 )
 
 //时间格式
@@ -28,10 +31,6 @@ const (
 )
 
 var idGen = idutil.NewGenerator(uint16(rand.Uint32()>>16), time.Now())
-
-func UUID() string {
-	return strings.Replace(uuid.NewUUID().String(), "-", "", -1)
-}
 
 //IDGen 生成数字ID带日期
 func IDGen() string {
@@ -44,7 +43,43 @@ func ID() uint64 {
 	return idGen.Next()
 }
 
-//RandCode IsEmail 生成随机字符串,len字符串长度,onlynumber 是否只包含数字
+// UUID 返回一个32位的不重复字符串
+func UUID() string {
+	if id, err := uuid.NewRandom(); err == nil {
+		return strings.ReplaceAll(id.String(), "-", "") // 先把-替换为空。
+	}
+	a := md5.Sum(strconv.AppendInt(strconv.AppendUint(nil, rand.Uint64(), 10), time.Now().UnixNano(), 10))
+	return hex.EncodeToString(a[:])
+}
+
+// SnowflakeUUID 用雪花算法生成UUID
+func SnowflakeUUID() int64 {
+	node, err := snowFlake.NewNode(0)
+	if err != nil {
+		fmt.Printf("error creating NewNode, %v", err)
+	}
+	id := node.NextID()
+	return id
+}
+
+// SnowflakeBatchUUID 用雪花算法批量生成UUID
+func SnowflakeBatchUUID(num int) (batchUUID []int64) {
+	node, _ := snowFlake.NewNode(1)
+
+	go func() {
+		for i := 0; i < num; i++ {
+			snowFlake.NewNode(1)
+		}
+	}()
+
+	for i := 0; i < num; i++ {
+		generate := node.NextID()
+		batchUUID = append(batchUUID, generate)
+	}
+	return batchUUID
+}
+
+//RandCode 生成随机字符串,len字符串长度,onlynumber 是否只包含数字
 func RandCode(len int, onlynumber bool) string {
 	if len < 1 {
 		return ""

@@ -1,7 +1,4 @@
 ## 雪花算法
-
-`author：asong`   `公众号：Golang梦工厂`
-
 > 简介：唯一ID算法`SnowFlake`是Twitter公司提出来的算法。非常广泛的应用在各种业务系统里。这一篇我们我们学习一下原生的`SnowFlake`算法，
 > 并用`go`实现一下。
 

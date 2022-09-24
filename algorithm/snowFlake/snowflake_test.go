@@ -1,4 +1,4 @@
-package uuid
+package snowFlake
 
 import (
 	"fmt"
@@ -22,7 +22,7 @@ func TestGetUUID(t *testing.T) {
 		t.Fatalf("error creating NewNode, %s", err)
 	}
 
-	id := node.Generate()
+	id := node.NextID()
 
 	t.Logf("Int64    : %#v", id)
 }
@@ -32,7 +32,7 @@ func TestBatchGetUUID(t *testing.T) {
 	node, _ := NewNode(1)
 
 	go func() {
-		for i := 0; i < 1000000000; i++ {
+		for i := 0; i < 4000; i++ {
 
 			NewNode(1)
 		}
@@ -40,7 +40,7 @@ func TestBatchGetUUID(t *testing.T) {
 	var batchUUID []int64
 
 	for i := 0; i < 4000; i++ {
-		generate := node.Generate()
+		generate := node.NextID()
 		batchUUID = append(batchUUID, generate)
 	}
 	fmt.Println(batchUUID)

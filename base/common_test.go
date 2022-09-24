@@ -1,14 +1,25 @@
 package base
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"fmt"
+	"github.com/google/uuid"
+	"math/rand"
+	"strconv"
 	"testing"
 	"time"
 )
 
 func TestUUID(t *testing.T) {
-	dec := UUID()
-	fmt.Println(dec)
+	uuid2 := UUID()
+
+	random, _ := uuid.NewRandom()
+	fmt.Println(uuid2)
+	fmt.Println(random)
+
+	a := md5.Sum(strconv.AppendInt(strconv.AppendUint(nil, rand.Uint64(), 10), time.Now().UnixNano(), 10))
+	fmt.Println(hex.EncodeToString(a[:]))
 }
 
 func TestIDGen(t *testing.T) {
@@ -19,6 +30,16 @@ func TestIDGen(t *testing.T) {
 func TestID(t *testing.T) {
 	dec := ID()
 	fmt.Println(dec)
+}
+
+func TestSnowflakeUUID(t *testing.T) {
+	id := SnowflakeUUID()
+	fmt.Println(id)
+}
+
+func TestSnowflakeBatchUUID(t *testing.T) {
+	ids := SnowflakeBatchUUID(1000)
+	fmt.Println(ids)
 }
 
 func TestRandCode(t *testing.T) {
