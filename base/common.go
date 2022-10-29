@@ -23,13 +23,6 @@ import (
 	"github.com/google/uuid"
 )
 
-//时间格式
-const (
-	DateFormat     = "2006-01-02"
-	DateTimeFormat = "2006-01-02 15:04:05"
-	TimeFormat     = "15:04:05"
-)
-
 var idGen = idutil.NewGenerator(uint16(rand.Uint32()>>16), time.Now())
 
 //IDGen 生成数字ID带日期
