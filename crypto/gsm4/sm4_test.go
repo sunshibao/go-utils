@@ -16,10 +16,13 @@ limitations under the License.
 package gsm4
 
 import (
+	"encoding/hex"
 	"fmt"
 	"reflect"
 	"testing"
 )
+
+// 加密，解密要用16进制存储
 
 func TestSM4(t *testing.T) {
 	key := []byte("1234567890abcdef")
@@ -43,7 +46,7 @@ func TestSM4(t *testing.T) {
 		t.Errorf("sm4 enc error:%s", err)
 		return
 	}
-	fmt.Printf("ecbEncode = %x\n", ecbEncode)
+	fmt.Printf("ecbEncode = %s\n", hex.EncodeToString(ecbEncode))
 	iv := []byte("0000000000000000")
 	err = SetIV(iv)
 	ecbDecode, err := Sm4Ecb(key, ecbEncode, false)
@@ -51,7 +54,7 @@ func TestSM4(t *testing.T) {
 		t.Errorf("sm4 dec error:%s", err)
 		return
 	}
-	fmt.Printf("ecbDecode = %x\n", ecbDecode)
+	fmt.Printf("ecbDecode = %s\n", hex.EncodeToString(ecbDecode))
 	if !testCompare(data, ecbDecode) {
 		t.Errorf("sm4 self enc and dec failed")
 	}
