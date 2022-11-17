@@ -25,10 +25,10 @@ import (
 // 加密，解密要用16进制存储
 
 func TestSM4(t *testing.T) {
-	key := []byte("1234567890abcdef")
+	key := []byte("yehcpu43zfD1fDge")
 
 	fmt.Printf("key = %v\n", key)
-	data := []byte{0x01, 0x23, 0x45, 0x67, 0x89, 0xab, 0xcd, 0xef, 0xfe, 0xdc, 0xba, 0x98, 0x76, 0x54, 0x32, 0x10}
+	data := []byte("17521009800")
 
 	err := WriteKeyToPemFile("key.pem", key, nil)
 	if err != nil {
@@ -39,7 +39,7 @@ func TestSM4(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	fmt.Printf("原始data = %x\n", data)
+	fmt.Printf("原始data = %s\n", data)
 
 	ecbEncode, err := Sm4Ecb(key, data, true)
 	if err != nil {
@@ -47,17 +47,15 @@ func TestSM4(t *testing.T) {
 		return
 	}
 	fmt.Printf("ecbEncode = %s\n", hex.EncodeToString(ecbEncode))
-	iv := []byte("0000000000000000")
+	iv := []byte("bn1PQTMbnyGv9xSx")
 	err = SetIV(iv)
 	ecbDecode, err := Sm4Ecb(key, ecbEncode, false)
 	if err != nil {
 		t.Errorf("sm4 dec error:%s", err)
 		return
 	}
-	fmt.Printf("ecbDecode = %s\n", hex.EncodeToString(ecbDecode))
-	if !testCompare(data, ecbDecode) {
-		t.Errorf("sm4 self enc and dec failed")
-	}
+	fmt.Printf("ecbDecode = %s\n", ecbDecode)
+
 	cbcEncode, err := Sm4Cbc(key, data, true)
 	if err != nil {
 		t.Errorf("sm4 enc error:%s", err)
@@ -68,23 +66,20 @@ func TestSM4(t *testing.T) {
 		t.Errorf("sm4 dec error:%s", err)
 		return
 	}
-	fmt.Printf("cbcDecode = %x\n", cbcDecode)
-	if !testCompare(data, cbcDecode) {
-		t.Errorf("sm4 self enc and dec failed")
-	}
+	fmt.Printf("cbcDecode = %s\n", cbcDecode)
 
 	cfbEncode, err := Sm4CFB(key, data, true)
 	if err != nil {
 		t.Errorf("sm4 cfb error:%s", err)
 	}
-	fmt.Printf("cbcCFB = %x\n", cfbEncode)
+	fmt.Printf("cfbEncode = %x\n", cfbEncode)
 
 	cfbDecode, err := Sm4CFB(key, cfbEncode, false)
 	if err != nil {
 		t.Errorf("sm4 dec error:%s", err)
 		return
 	}
-	fmt.Printf("cfbDecode = %x\n", cfbDecode)
+	fmt.Printf("cfbDecode = %s\n", cfbDecode)
 
 	ofbEncode, err := Sm4OFB(key, data, true)
 	if err != nil {
@@ -97,7 +92,11 @@ func TestSM4(t *testing.T) {
 		t.Errorf("sm4 dec error:%s", err)
 		return
 	}
-	fmt.Printf("ofbDecode = %x\n", ofbDecode)
+	fmt.Printf("ofbDecode = %s\n", ofbDecode)
+
+	//检验原始数据与解密数据是否相等
+	isCompare := testCompare(data, cbcDecode)
+	fmt.Println(isCompare)
 }
 
 func BenchmarkSM4(t *testing.B) {
