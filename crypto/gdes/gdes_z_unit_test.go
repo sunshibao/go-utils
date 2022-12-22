@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	errKey     = []byte("1111111111111234123456789")
+	errKey     = []byte("1dsdw234sew")
 	errIv      = []byte("123456789")
 	errPadding = 5
 )

@@ -1,0 +1,75 @@
+version: '3.8'
+services:
+  #  nsqlookupd、nsqd、nsqadmin 搭配使用 注意端口号的设置
+  nsqlookupd:
+    container_name: max-nsqlookupd
+    image: nsqio/nsq
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    command: /nsqlookupd --broadcast-address=nsqlookupd --tcp-address=0.0.0.0:4160 --http-address=0.0.0.0:4161
+    ports:
+      - 4160:4160
+      - 4161:4161
+    networks:
+      - max-net
+  nsqd1:
+    container_name: max-nsqd1
+    image: nsqio/nsq
+    restart: always
+    environment:
+      - TZ=Asia/shanghai
+    command: /nsqd --broadcast-address=nsqd1 --lookupd-tcp-address=nsqlookupd:4160 --tcp-address=0.0.0.0:4150 --http-address=0.0.0.0:4151
+    depends_on:
+      - nsqlookupd
+    ports:
+      - 4150:4150
+      - 4151:4151
+    networks:
+      - max-net
+  nsqd2:
+    container_name: max-nsqd2
+    image: nsqio/nsq
+    restart: always
+    environment:
+      - TZ=Asia/shanghai
+    command: /nsqd --broadcast-address=nsqd2 --lookupd-tcp-address=nsqlookupd:4160 --tcp-address=0.0.0.0:4250 --http-address=0.0.0.0:4251
+    depends_on:
+      - nsqlookupd
+    ports:
+      - 4250:4250
+      - 4251:4251
+    networks:
+      - max-net
+  nsqd3:
+    container_name: max-nsqd3
+    image: nsqio/nsq
+    restart: always
+    environment:
+      - TZ=Asia/shanghai
+    command: /nsqd --broadcast-address=nsqd3 --lookupd-tcp-address=nsqlookupd:4160 --tcp-address=0.0.0.0:4350 --http-address=0.0.0.0:4351
+    depends_on:
+      - nsqlookupd
+    ports:
+      - 4350:4350
+      - 4351:4351
+    networks:
+      - max-net
+  nsqadmin:
+    container_name: max-nsqadmin
+    image: nsqio/nsq
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    depends_on:
+      - nsqlookupd
+    ports:
+      - 4171:4171
+    networks:
+      - max-net
+networks:
+  max-net:
+    ipam:
+      config:
+        - subnet: 172.15.0.0/24
