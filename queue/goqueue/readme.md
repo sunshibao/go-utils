@@ -1,9 +1,9 @@
 # go-queue
+## 前言
+- dq：依赖于beanstalkd ，适合延时、定时任务执行
+- kq：依赖于 kafka ，适用于异步、批量任务执行
 
-## dq
-
-High available beanstalkd.
-
+## dq 依赖于beanstalkd ，适合延时、定时任务执行
 ### consumer example
 ```go
 consumer := dq.NewConsumer(dq.DqConf{
@@ -47,10 +47,7 @@ for i := 1000; i < 1005; i++ {
 }
 ```
 
-## kq
-
-Kafka Pub/Sub framework
-
+## kq 依赖于 kafka ，适用于异步、批量任务执行
 ### consumer example
 
 config.json
