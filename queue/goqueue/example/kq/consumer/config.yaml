@@ -1,0 +1,9 @@
+Name: kq
+Brokers:
+- 127.0.0.1:9092
+- 127.0.0.1:9092
+- 127.0.0.1:9092
+Group: adhoc
+Topic: kq
+Offset: first
+Consumers: 1
