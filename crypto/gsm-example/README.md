@@ -22,13 +22,13 @@
 - SM4在线加密工具:http://sm.skill86.com/sm4.html
 
 ## 验签步骤
-1. 先去sm4 把自己想要加密的数据进行加密。
+#### 1. 先去sm4 把自己想要加密的数据进行加密。
 sm4 key:
 ```
 @PHXGV9Tb9V+8-J&
 ```
 ![file](http://qiniu.skill86.com/20230103/2ZUI18v6rdiTfmr3KXZYZhrpYp4eHInu2jJ5Nhl7.png)
-2. 拿到加密后的数据去sm2里面生成签名
+#### 2. 拿到加密后的数据去sm2里面生成签名
 ![file](http://qiniu.skill86.com/20230103/M1shjGiBs24V4hBmkQ8Fzeucji1g9p6aje9LK0BL.png)
-3. 在请求连接的header 添加sign 参数
+#### 3. 在请求连接的header 添加sign 参数
 ![file](http://qiniu.skill86.com/20230107/vPbSIbCgRTVEublIYuXv9LOQi51MmJBSplm8cVM8.png)
