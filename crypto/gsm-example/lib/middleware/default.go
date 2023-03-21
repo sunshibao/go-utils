@@ -4,10 +4,10 @@ import (
 	"bytes"
 	"encoding/base64"
 	"github.com/gin-gonic/gin"
+	"github.com/sunshibao/go-utils/crypto/gsm-example/lib/core"
+	"github.com/sunshibao/go-utils/crypto/gsm-example/lib/smCrypto"
 	"io/ioutil"
 	"net/http"
-	"utils/crypto/gsm-example/lib/core"
-	"utils/crypto/gsm-example/lib/smCrypto"
 )
 
 //解密客户端参数

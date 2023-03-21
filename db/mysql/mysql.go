@@ -5,12 +5,12 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/spf13/viper"
+	"github.com/sunshibao/go-utils/db/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
 	"time"
-	"utils/db/config"
 )
 
 var dataBase *gorm.DB

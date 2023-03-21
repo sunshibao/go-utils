@@ -3,11 +3,11 @@ package base
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"github.com/sunshibao/go-utils/algorithm/snowFlake"
 	"io"
 	"reflect"
 	"regexp"
 	"strings"
-	"utils/algorithm/snowFlake"
 
 	"math/rand"
 

@@ -5,9 +5,9 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/nacos-group/nacos-sdk-go/common/logger"
 	"github.com/spf13/viper"
+	"github.com/sunshibao/go-utils/db/config"
 	"os"
 	"time"
-	"utils/db/config"
 )
 
 var Client *redis.Client

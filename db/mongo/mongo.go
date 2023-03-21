@@ -3,9 +3,9 @@ package mongo
 import (
 	"fmt"
 	"github.com/spf13/viper"
+	"github.com/sunshibao/go-utils/db/config"
 	"gopkg.in/mgo.v2"
 	"os"
-	"utils/db/config"
 )
 
 var session *mgo.Session

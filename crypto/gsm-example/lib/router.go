@@ -2,8 +2,8 @@ package lib
 
 import (
 	"github.com/gin-gonic/gin"
-	"utils/crypto/gsm-example/lib/core"
-	"utils/crypto/gsm-example/lib/middleware"
+	"github.com/sunshibao/go-utils/crypto/gsm-example/lib/core"
+	"github.com/sunshibao/go-utils/crypto/gsm-example/lib/middleware"
 )
 
 func Register(g *gin.Engine) *gin.Engine {
