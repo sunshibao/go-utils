@@ -1,12 +1,8 @@
 ## 排序算法
 
-`author：asong`   `公众号：Golang梦工厂`
+`author：sunshibao`   `公众号：GO浪研习社`
 
 > 简介：排序算法在我们日常开发中、面试中都会使用到，所以就打算弄一个合集，把常用的排序算法用`Go`实现一下。如果你还不会这些那就说不过去了哦～～～。
->
-> 代码已经收录到我的github，需要的自取：https://github.com/asong2020/go-algorithm/tree/master/sort
-
-
 
 ## 算法分类
 

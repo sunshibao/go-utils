@@ -254,3 +254,13 @@ func SliceSameElementShowNum[T iType](arr []T) map[T]int {
 
 	return tempMap
 }
+
+//检查是否在切片内
+func IsInSlice(slice []int, item int) bool {
+	for _, s := range slice {
+		if s == item {
+			return true
+		}
+	}
+	return false
+}
