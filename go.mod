@@ -1,6 +1,6 @@
 module github.com/sunshibao/go-utils
 
-go 1.18
+go 1.20
 
 require (
 	cloud.google.com/go/bigquery v1.44.0
@@ -8,6 +8,7 @@ require (
 	github.com/BurntSushi/toml v1.2.0
 	github.com/Shopify/sarama v1.36.0
 	github.com/beanstalkd/go-beanstalk v0.2.0
+	github.com/btcsuite/btcutil v1.0.2
 	github.com/coreos/etcd v3.3.27+incompatible
 	github.com/fsnotify/fsnotify v1.5.4
 	github.com/garyburd/redigo v1.6.4
